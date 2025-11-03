@@ -16,7 +16,6 @@ phases:
       
   build:
     commands:
-      - cd lambda_package
       - echo "Creating deployment package..."
       # スクリプトを package フォルダにコピー
       - cp scraper.py ./package/
@@ -27,11 +26,10 @@ phases:
 
   post_build:
     commands:
-      - cd lambda_package
       - echo "Deploying to Lambda..."
       - aws lambda update-function-code --function-name kobeNewsScraperFunction --zip-file fileb://deployment_package.zip
       - echo "Deployment complete."
 
 artifacts:
   files:
-    - deployment_package.zip
+    - lambda_package/deployment_package.zip
