@@ -27,7 +27,9 @@ phases:
   post_build:
     commands:
       - echo "Deploying to Lambda..."
-      - aws lambda update-function-code --function-name kobeNewsScraperFunction --zip-file fileb://deployment_package.zip
+
+
+      - aws lambda update-function-code --function-name kobeNewsScraperFunction --zip-file fileb://deployment_package.zip --region ap-northeast-3
       - echo "Deployment complete."
 
 artifacts:
